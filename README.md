@@ -1,3 +1,3 @@
 # AoC
 
-These are my solutions to the challennges
+These are my solutions to the challenges
