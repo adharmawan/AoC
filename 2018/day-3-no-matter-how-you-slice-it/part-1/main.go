@@ -1294,7 +1294,7 @@ type Input struct {
 	xOffset int
 	yoffSet int
 	width   int
-	length  int
+	height  int
 }
 
 func main() {
@@ -1302,7 +1302,7 @@ func main() {
 }
 
 func parseInput(input string) *Input {
-	r := regexp.MustCompile(`#(?P<claimID>.+) @ (?P<xOffset>\d+),(?P<yOffset>\d+): (?P<width>\d+)x(?P<length>\d+)`)
+	r := regexp.MustCompile(`#(?P<claimID>.+) @ (?P<xOffset>\d+),(?P<yOffset>\d+): (?P<width>\d+)x(?P<height>\d+)`)
 	matches := r.FindStringSubmatch(input)
 	intMatches := stringSliceToInt(matches[1:])
 	return &Input{
@@ -1326,10 +1326,10 @@ func stringSliceToInt(inputs []string) []int {
 	return output
 }
 
-func generateFields(x, y, width, length int) []string {
+func generateFields(x, y, width, height int) []string {
 	var fields []string
 	for i := 0; i < width; i++ {
-		for j := 0; j < length; j++ {
+		for j := 0; j < height; j++ {
 			fields = append(fields, fmt.Sprintf("(%d,%d)", i+x, j+y))
 		}
 	}
@@ -1345,7 +1345,7 @@ func findAnswer(inputStr string) int {
 
 	totalFields := make(map[string]int)
 	for _, input := range inputs {
-		fields := generateFields(input.xOffset, input.yoffSet, input.width, input.length)
+		fields := generateFields(input.xOffset, input.yoffSet, input.width, input.height)
 		for _, field := range fields {
 			totalFields[field] = totalFields[field] + 1
 		}

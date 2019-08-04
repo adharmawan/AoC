@@ -1306,7 +1306,7 @@ func Test_parseInput(t *testing.T) {
 				xOffset: 824,
 				yoffSet: 23,
 				width:   26,
-				length:  20,
+				height:  20,
 			},
 		},
 		{
@@ -1319,7 +1319,7 @@ func Test_parseInput(t *testing.T) {
 				xOffset: 262,
 				yoffSet: 28,
 				width:   11,
-				length:  29,
+				height:  29,
 			},
 		},
 	}
@@ -1337,7 +1337,7 @@ func Test_generateFields(t *testing.T) {
 		x      int
 		y      int
 		width  int
-		length int
+		height int
 	}
 	tests := []struct {
 		name string
@@ -1367,7 +1367,7 @@ func Test_generateFields(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := generateFields(tt.args.x, tt.args.y, tt.args.width, tt.args.length); !reflect.DeepEqual(got, tt.want) {
+			if got := generateFields(tt.args.x, tt.args.y, tt.args.width, tt.args.height); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("generateFields() = %v, want %v", got, tt.want)
 			}
 		})
