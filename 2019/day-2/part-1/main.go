@@ -26,20 +26,24 @@ func findAnswer(inputs []int) int {
 }
 
 func run(inputs []int) ([]int, error) {
-	opcode := inputs[0]
-	firstNumberPosition := inputs[1]
-	secondNumberPosition := inputs[2]
-	positionToStoreResult := inputs[3]
-	if opcode == 99 {
-		return inputs, nil
-	} else if opcode == 1 {
-		result := inputs[firstNumberPosition] + inputs[secondNumberPosition]
-		inputs[positionToStoreResult] = result
-	} else if opcode == 2 {
-		result := inputs[firstNumberPosition] * inputs[secondNumberPosition]
-		inputs[positionToStoreResult] = result
-	} else {
-		return nil, fmt.Errorf("unhandled case. Something went wrong")
+	for i := 0; i < len(inputs); i = i + 4 {
+		opcode := inputs[i]
+		if opcode == 99 {
+			return inputs, nil
+		}
+
+		firstNumberPosition := inputs[i+1]
+		secondNumberPosition := inputs[i+2]
+		positionToStoreResult := inputs[i+3]
+		if opcode == 1 {
+			result := inputs[firstNumberPosition] + inputs[secondNumberPosition]
+			inputs[positionToStoreResult] = result
+		} else if opcode == 2 {
+			result := inputs[firstNumberPosition] * inputs[secondNumberPosition]
+			inputs[positionToStoreResult] = result
+		} else {
+			return nil, fmt.Errorf("unhandled case. Something went wrong")
+		}
 	}
 	return inputs, nil
 }
