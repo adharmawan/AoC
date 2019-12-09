@@ -62,9 +62,6 @@ func findAnswer() float64 {
 	return minDistance
 }
 
-func findIntersections() {
-
-}
 func fromCoordinatesToDistance(coordinate Coordinate) float64 {
 	return math.Abs(float64(coordinate.X)) + math.Abs(float64(coordinate.Y))
 }
