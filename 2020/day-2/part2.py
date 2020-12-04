@@ -31,7 +31,6 @@ assert isPasswordValid(2, 9, "c", "ccccccccc") == False
 
 count = 0
 for i in input:
-    print(i)
     if isPasswordValid(i["min"], i["max"], i["letter"], i["password"]):
         count += 1
 

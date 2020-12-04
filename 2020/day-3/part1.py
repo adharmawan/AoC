@@ -6,14 +6,17 @@ with open('input.txt') as my_file:
 assert input[0][8] == "#"
 assert input[2][8] == "."
 
+def treesEncountered(map, right, down):
+    i = 0
+    j = 0
+    trees = 0
+    while i < len(input)-1:
+        j += right
+        i += down
 
-treesEncountered = 0
-i = 0
-j = 0
-while i < len(input)-1:
-    j += 3
-    i += 1
-    if input[i][j% len(input[i])] == "#":
-        treesEncountered += 1
+        if map[i][j%len(input[i])] == "#":
+            trees += 1
 
-print("answer", treesEncountered)
+    return trees
+
+print("answer", treesEncountered(input, 3, 1))

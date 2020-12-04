@@ -18,40 +18,22 @@ with open('input.txt') as my_file:
         }
         input.append(inputDict)
 
-
-#  print(input)
-#  print(len(input))
-
-
 assert len(input) == 1000
 
-
-
 def isPasswordValid(min, max, letter, password):
-    #  charCount = {}
-    #  for p in password:
-        #  if p not in charCount:
-            #  charCount[p] = 1
-        #  else:
-            #  charCount[p] = charCount[p] +1
-
     letterCount = 0
     for p in password:
         if p == letter:
             letterCount += 1
     return letterCount >= min and letterCount <= max
 
-
 assert isPasswordValid(1, 3, "a", "abcde") == True
 assert isPasswordValid(1, 3, "b", "cdefg") == False
 assert isPasswordValid(2, 9, "c", "ccccccccc") == True
 
-
 count = 0
 for i in input:
-    print(i)
     if isPasswordValid(i["min"], i["max"], i["letter"], i["password"]):
         count += 1
-
 
 print("answer", count)
